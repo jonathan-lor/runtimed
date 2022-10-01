@@ -1,2 +1,2 @@
-<b>HowdyHack 2022</b>
-Project: Runtimed.
+<h1>HowdyHack 2022</h1>
+<h3>Project: Runtimed.</h3
