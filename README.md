@@ -6,4 +6,4 @@
 - [Christopher Colling](https://github.com/horsenuggets)
 - [Hunter Finch](https://github.com/hfinchy12)
 - [Jonathan Lor](https://github.com/jonathan-lor)
-- [Minh Nguyen](https://github.com/Minh-Dao-Nguyen)
+- [Minh Dao Nguyen](https://github.com/Minh-Dao-Nguyen)
