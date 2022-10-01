@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/jonathan-lor/runtimed/issues"
   },
-  "homepage": "https://github.com/jonathan-lor/runtimed#readme"
+  "homepage": "https://github.com/jonathan-lor/runtimed#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
