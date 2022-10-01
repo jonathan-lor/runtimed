@@ -1,0 +1,20 @@
+{
+    "name": "runtimed",
+    "version": "1.0.0",
+    "description": "**Runtimed** is a web application that statistically analyzes the runtime complexity of a C++ program. It has been created for HowdyHack 2022.",
+    "main": "app.js",
+    "scripts": {
+        "start": "node app.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jonathan-lor/runtimed.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jonathan-lor/runtimed/issues"
+    },
+    "homepage": "https://github.com/jonathan-lor/runtimed#readme"
+}
