@@ -14,6 +14,11 @@ app.post("/analyze", async (req, res) => {
     res.send(result)
 })
 
+app.get("/api", (req, res) => {
+    res.json({ message: "Connected with server!" });
+  });
+
+
 app.listen(port, () => {
     console.log(`Server created on http://localhost:${port}/.`)
 })
