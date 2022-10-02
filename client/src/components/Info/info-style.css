@@ -1,0 +1,75 @@
+#main_container{
+    background-color: #072047 ;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+#header_container{
+    background-color: #043685;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+    color: white; 
+    
+    
+}
+
+#body_container{
+    display : grid; 
+}
+
+#introduction_container{
+    color: white; 
+    font-size: 20px;
+    text-align: left;
+    margin-left: 50px;
+    padding-left: 40px;
+    width: 500px; 
+    background-color: #153970;
+    padding-bottom: 40px; 
+
+    grid-row: 1;
+    grid-column: 1;
+}
+
+#introduction_header_container{
+    font-size: 30px;
+    margin-bottom: 20px;
+    padding-top: 40px;  
+
+}
+
+
+#bigO_container{
+    margin-top: 50px;
+    color: white; 
+    font-size: 20px;
+    text-align: left;
+    margin-left: 50px;
+    padding-left: 40px;
+    width: 500px; 
+    background-color: #153970;
+    padding-bottom: 40px; 
+    padding-top: 30px; 
+
+    grid-row: 2;
+    grid-column: 3;
+}
+
+#BigOgif{
+    width: 300px; 
+    justify-self: center;
+}
+
+#BigO_heaerTxt_container{
+    font-size: 30px;
+    margin-bottom: 20px;
+    padding-top: 40px;
+}
+
+#BigO_heaerTxt_container{
+    color: white; 
+    text-align: left;
+}
