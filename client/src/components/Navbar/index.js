@@ -1,6 +1,6 @@
-import React from 'react'
-import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, ResumeLink, /*NavBtnLink*/ } from './NavbarElements'
-import { BsThreeDotsVertical } from 'react-icons/bs';
+import React from "react"
+import { Nav, NavbarContainer, NavLogo, MobileIcon, NavMenu, NavItem, NavLinks, ResumeLink } from "./NavbarElements"
+import { BsThreeDotsVertical } from "react-icons/bs";
 
 const Navbar = ({ toggle }) => {
     return (

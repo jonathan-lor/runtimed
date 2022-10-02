@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 3001;
 const path = require("path")
 const analyze = require("./analyze.js")
 
@@ -16,8 +16,7 @@ app.post("/analyze", async (req, res) => {
 
 app.get("/api", (req, res) => {
     res.json({ message: "Connected with server!" });
-  });
-
+});
 
 app.listen(port, () => {
     console.log(`Server created on http://localhost:${port}/.`)

@@ -1,7 +1,5 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 import { Link } from "react-router-dom";
-
-
 
 export const Nav = styled.nav`
     background: linear-gradient(to bottom, #1C1545 70%, rgba(0,0,0,0) 100%);
@@ -112,33 +110,3 @@ export const ResumeLink = styled.div`
         transition: all 0.3s ease-in-out;
     }
 `;
-/*
-export const NavBtn = styled.nav`
-    display: flex;
-    align-items: center;
-
-    @media screen and (max-width: 768px) {
-        display: none;
-    }
-`;
-
-export const NavBtnLink = styled(Link)`
-    border-radius: 50px;
-    background: #01bf71;
-    white-space: nowrap;
-    padding: 10px 22px;
-    color: #010606;
-    font-size: 16px;
-    outline: none;
-    border: none;
-    cursor: pointer;
-    transition: all 0.2s ease-in-out;
-    text-decoration: none;
-
-    &:hover {
-        transition: all 0.2s ease-in-out;
-        background: #fff;
-        color: #010606;
-    }
-`;
-*/
