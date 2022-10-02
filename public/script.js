@@ -1,4 +1,5 @@
 import * as ide from "./ide/editor.js";
+import getRegression from "./getRegression.js";
 
 const codearea = document.getElementById("codearea")
 const editor = ide.create(codearea, { languageType: "hecker" })
@@ -25,8 +26,8 @@ async function post(name, body) {
     return data;
 }
 
-editor.setValue(`
-#include <iostream>
+editor.setValue(
+`#include <iostream>
 
 using namespace std;
 
@@ -39,8 +40,7 @@ int main() {
     }
 
     cout << sum << endl;
-}
-`)
+}`)
 
 analyze.onclick = async function() {
     const code = editor.getValue();
@@ -48,5 +48,5 @@ analyze.onclick = async function() {
     
     console.log(data)
 
-    result.innerText = "view the console for the details"
+    result.innerText = await getRegression(data)
 }

@@ -13,7 +13,7 @@ async function runCode(container, code, inputs, timeout) {
 
             let process;
             
-            exec(`g++ -O0 -o ${container}/runner ${container}/temp.cpp`, (error, _stdout, stderr) => {
+            exec(`g++ -o ${container}/runner ${container}/temp.cpp`, (error, _stdout, stderr) => {
                 if (error) {
                     resolve(error.message);
                     return;
@@ -34,6 +34,8 @@ async function runCode(container, code, inputs, timeout) {
                     process.stdin.end();
     
                     let output = "";
+
+                    process.on("error", error => {})
     
                     process.stdout.on("data", data => {
                         output += `${data}`;
@@ -100,14 +102,23 @@ function removeContainer(container) {
 
 const inputs = [
     "1",
+    "5",
     "10",
+    "50",
     "100",
+    "500",
     "1000",
+    "5000",
     "10000",
+    "50000",
     "100000",
+    "500000",
     "1000000",
+    "5000000",
     "10000000",
+    "50000000",
     "100000000",
+    "500000000",
     "1000000000"
 ]
 
