@@ -2,13 +2,13 @@ let calculator = null;
 
 const regressions = {
     "linear": "y_1 \\sim m x_1 + b",
-    "quadratic": "y_1 \\sim m (x_1)^2 + b",
+    "quadratic": "y_1 \\sim \\abs(m) (x_1)^2 + b",
     "cubic": "y_1 \\sim m (x_1)^3 + b",
-    "exponential": "y_1 \\sim \\abs(m) 2^{x_1} + \\abs(c)",
+    // "exponential": "y_1 \\sim \\abs(m) 2^{x_1} + \\abs(c)",
     "logarithmic": "y_1 \\sim m \\log_d(x_1) + b",
-    "nlogn": "y_1 \\sim m x_1 \\log_2(x_1) + b",
-    "factorial": "y_1 \\sim m (x_1 !) + b",
-    "constant": "y_1 \\sim b"
+    // "nlogn": "y_1 \\sim m x_1 \\log_2(x_1) + b",
+    // "factorial": "y_1 \\sim m (x_1 !) + b",
+    // "constant": "y_1 \\sim b"
 }
 
 async function getRegression(type, xValues, yValues) {
@@ -70,6 +70,10 @@ export default async function(values) {
 
     for (const type of Object.keys(regressions)) {
         const rSquared = await getRegression(type, xValues, yValues)
+
+        if (type === "linear" && rSquared != null && rSquared <= 0.01) {
+            return { type: "constant", rSquared }
+        }
 
         console.log(type, rSquared)
 

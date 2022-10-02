@@ -54,11 +54,15 @@ const regressionNames = {
 }
 
 analyze.onclick = async function() {
+    analyze.disabled = true;
+    
     const code = editor.getValue();
     const data = await post("analyze", code);
     const regression = await getRegression(data)
-
+    
     if (regression.type != null) {
         result.innerHTML = regressionNames[regression.type]
     }
+
+    analyze.disabled = false;
 }

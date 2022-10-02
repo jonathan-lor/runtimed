@@ -24,43 +24,51 @@ async function runCode(container, code, inputs, timeout) {
                 }
 
                 function executeCode(index) {
-                    const input = inputs[index];
-                    const startTime = prcs.hrtime.bigint()
-                    
-                    process = spawn(`${container}/runner`);
-                    
-                    process.stdin.write(input);
-                    
-                    process.stdin.end();
+                    try {
+                        const input = inputs[index];
+                        const startTime = prcs.hrtime.bigint()
+                        
+                        process = spawn(`${container}/runner`);
+                        
+                        process.stdin.write(input);
+                        
+                        process.stdin.end();
+        
+                        let output = "";
     
-                    let output = "";
-
-                    process.on("error", error => {})
+                        process.on("error", error => {})
+        
+                        process.stdout.on("data", data => {
+                            output += `${data}`;
+                        });
+        
+                        process.stderr.on("data", data => {
+                            output += `${data}`;
+                        });
+        
+                        process.on("close", _code => {
+                            const endTime = prcs.hrtime.bigint()
+                            const difference = (endTime - startTime).toString()
+        
+                            results.push({
+                                input: input,
+                                output: output,
+                                time: difference
+                            })
     
-                    process.stdout.on("data", data => {
-                        output += `${data}`;
-                    });
-    
-                    process.stderr.on("data", data => {
-                        output += `${data}`;
-                    });
-    
-                    process.on("close", _code => {
-                        const endTime = prcs.hrtime.bigint()
-                        const difference = (endTime - startTime).toString()
-    
-                        results.push({
-                            input: input,
-                            output: output,
-                            time: difference
-                        })
-
+                            if (index === inputs.length - 1) {
+                                resolve(results);
+                            } else {
+                                executeCode(index + 1);
+                            }
+                        });
+                    } catch (err) {
                         if (index === inputs.length - 1) {
                             resolve(results);
                         } else {
                             executeCode(index + 1);
                         }
-                    });
+                    }
                 }
 
                 executeCode(0)

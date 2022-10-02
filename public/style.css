@@ -1,9 +1,10 @@
-/* import Rubik font */
+@import url("//fonts.googleapis.com/css2?family=Rubik&family=Space+Mono&display=swap");
 
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    --button-color: rgb(113, 107, 207);
 }
 
 /* :root {
@@ -11,42 +12,138 @@
 } */
 
 body {
-    /* background-color: #151515; */
+    background-color: #151515;
     font-family: "Rubik", sans-serif, serif;
     width: 100vw;
     height: 100vh;
 }
 
 #container {
+    background-color: #151515;
     width: 100vw;
     height: 100vh;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     padding: 0.5rem;
-    /* background-color: black; */
+}
+
+h1 {
+    color: #eee;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+#content {
+    background-color: #151515;
+    width: 100vw;
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
 }
 
 #code-container {
+    background-color: #222;
     overflow: hidden !important;
-    height: 50%;
+    height: 100%;
     width: 50%;
     position: relative;
 }
 
 #codearea {
     overflow: hidden !important;
-    height: 100%;
+    height: 95%;
     width: 100%;
     position: absolute;
-}
-
-button {
-    width: 10rem;
-    height: 4rem;
+    margin-top: 1rem;
 }
 
 #result {
-    width: 30rem;
-    height: 20rem;
-    background-color: #dddddd;
+    height: 70%;
+    background-color: #222;
+    color: #eee;
+    font-family: monospace;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5rem;
+}
+
+.rounded {
+    border-radius: 0.5rem;
+}
+
+#rightbar {
+    width: 30%;
+    height: 80%;
+    margin-left: 1rem;
+}
+
+button {
+    width: 100%;
+    height: 4rem;
+    margin-bottom: 1rem;
+    transition: all 150ms;
+    font-size: 1.125rem;
+    border: none;
+    background-color: var(--button-color);
+    opacity: 1;
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.03);
+    box-shadow: 0 0 1.5rem -0.5rem var(--button-color);
+    opacity: 1;
+}
+
+button:active {
+    transform: scale(1.01) !important;
+    opacity: 1;
+}
+
+button:disabled {
+    background-color: var(--button-color) !important;
+    box-shadow: none !important;
+    transform: scale(1) !important;
+    cursor: default !important;
+    color: #444 !important;
+    opacity: 0.5;
+}
+
+/* VSCode Editor Styles */
+
+.decorationsOverviewRuler {
+    display: none !important;
+}
+
+.cldr.folding {
+    display: none !important;
+}
+
+.editor-widget.find-widget {
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.monaco-sash.vertical {
+    background-color: inherit !important;
+}
+
+.monaco-editor .scroll-decoration {
+    box-shadow: #222 0 4rem 4rem -4rem inset !important;
+}
+
+.tree {
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.monaco-list-row.focused {
+    background-color: #3d3d3d !important;
 }
