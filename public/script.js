@@ -31,8 +31,14 @@ editor.setValue(`
 using namespace std;
 
 int main() {
-    cout << "Hello, world!" << endl;
-    return 0;
+    int n; cin >> n;
+    int sum = 0;
+
+    for (int i = 0; i < n; i++) {
+        sum += i;
+    }
+
+    cout << sum << endl;
 }
 `)
 
@@ -42,5 +48,5 @@ analyze.onclick = async function() {
     
     console.log(data)
 
-    result.innerText = data.time
+    result.innerText = "view the console for the details"
 }
