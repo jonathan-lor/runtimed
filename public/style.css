@@ -1,0 +1,50 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* :root {
+    color-scheme: dark;
+} */
+
+body {
+    /* background-color: #151515; */
+    font-family: "Rubik", sans-serif, serif;
+    width: 100vw;
+    height: 100vh;
+}
+
+#container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    padding: 0.5rem;
+    /* background-color: black; */
+}
+
+#code-container {
+    overflow: hidden !important;
+    height: 50%;
+    width: 50%;
+    position: relative;
+}
+
+#codearea {
+    overflow: hidden !important;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+}
+
+button {
+    width: 10rem;
+    height: 4rem;
+}
+
+#result {
+    width: 30rem;
+    height: 20rem;
+    background-color: #dddddd;
+}

@@ -1,0 +1,60 @@
+/* VSCode Editor Styles */
+
+.decorationsOverviewRuler {
+    display: none !important;
+}
+
+.cldr.folding {
+    display: none !important;
+}
+
+.editor-widget.find-widget {
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.monaco-sash.vertical {
+    background-color: inherit !important;
+}
+
+.monaco-editor .scroll-decoration {
+    box-shadow: #222 0 4rem 4rem -4rem inset !important;
+}
+
+.tree {
+    border-radius: 0.25rem;
+    overflow: hidden;
+}
+
+.monaco-list-row.focused {
+    background-color: #3d3d3d !important;
+}
+
+.slider {
+    width: 10px !important;
+    left: 4px !important;
+    transition: none !important;
+    animation: none !important;
+}
+
+.visible.scrollbar.vertical {
+    transition: none !important;
+    animation: none !important;
+}
+
+.invisible.scrollbar.vertical {
+    transition: none !important;
+    animation: none !important;
+}
+
+.scroll-decoration {
+    display: none !important;
+}
+
+.monaco-inputbox {
+    border-radius: 0.5rem !important;
+}
+
+.monaco-editor .find-widget {
+    box-shadow: 0 2px 8px #00000088 !important;
+}
