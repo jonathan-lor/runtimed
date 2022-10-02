@@ -4,21 +4,16 @@ const path = require("path");
 const uuid = require("uuid");
 const prcs = require("process")
 
-let sandbox = false; // Enable/disable the sandbox
-
-async function runCode(container, code, input, timeout) {
-    console.log("trying...")
-
+async function runCode(container, code, inputs, timeout) {
     return new Promise(async resolve => {
-        const errormessage = "An server error has occured. Please try again.";
-        const timemessage = "The script took too long to execute. This is most likely due to an infinite loop, or your code is not fully optimized for certain testcases.";
+        const results = []
 
         try {
             fs.writeFileSync(`${container}/temp.cpp`, code);
 
             let process;
             
-            exec(`g++ -o ${container}/runner ${container}/temp.cpp`, (error, _stdout, stderr) => {
+            exec(`g++ -O0 -o ${container}/runner ${container}/temp.cpp`, (error, _stdout, stderr) => {
                 if (error) {
                     resolve(error.message);
                     return;
@@ -28,63 +23,57 @@ async function runCode(container, code, input, timeout) {
                     resolve(stderr);
                 }
 
-                let settings = {};
+                function executeCode(index) {
+                    const input = inputs[index];
+                    const startTime = prcs.hrtime.bigint()
+                    
+                    process = spawn(`${container}/runner`);
+                    
+                    process.stdin.write(input);
+                    
+                    process.stdin.end();
+    
+                    let output = "";
+    
+                    process.stdout.on("data", data => {
+                        output += `${data}`;
+                    });
+    
+                    process.stderr.on("data", data => {
+                        output += `${data}`;
+                    });
+    
+                    process.on("close", _code => {
+                        const endTime = prcs.hrtime.bigint()
+                        const difference = (endTime - startTime).toString()
+    
+                        results.push({
+                            input: input,
+                            output: output,
+                            time: difference
+                        })
 
-                if (sandbox) {
-                    settings = {
-                        env: {
-                            LD_PRELOAD: `${path.join(__dirname, "sandbox")}/EasySandbox.so`
+                        if (index === inputs.length - 1) {
+                            resolve(results);
+                        } else {
+                            executeCode(index + 1);
                         }
-                    };
+                    });
                 }
 
-                console.log("compiled")
-                
-                const startTime = prcs.hrtime.bigint()
-                
-                process = spawn(`${container}/runner`, settings);
-                
-                console.log("process spawned")
-                
-                process.on("error", _err => {
-                    resolve(errormessage);
-                });
-                
-                process.stdin.write(input);
-                
-                process.stdin.end();
-
-                let result = "";
-
-                process.stdout.on("data", data => {
-                    result += `${data}`;
-                });
-
-                process.stderr.on("data", data => {
-                    result += `${data}`;
-                });
-
-                process.on("close", _code => {
-                    const endTime = prcs.hrtime.bigint()
-                    const difference = (endTime - startTime).toString()
-
-                    resolve({
-                        output: result,
-                        time: difference
-                    });
-                });
+                executeCode(0)
             });
 
             setTimeout(() => {
                 if (process) {
                     process.kill();
-                    resolve(timemessage);
+                    resolve(results);
                 } else {
-                    resolve("The script took too long to compile.");
+                    resolve(results);
                 }
             }, timeout);
         } catch (err) {
-            resolve(errormessage);
+            resolve(results);
         }
     });
 }
@@ -109,25 +98,25 @@ function removeContainer(container) {
     }
 }
 
-// function cleanOutput(text) {
-//     text = text.replace("<<entering SECCOMP mode>>\n<<entering SECCOMP mode>>\n", "");
-//     text = text.replace("<<entering SECCOMP mode>>\n<<entering SECCOMP mode>>", "");
-//     text = text.replaceAll("<<entering SECCOMP mode>>\n", "");
-//     text = text.replaceAll("<<entering SECCOMP mode>>", "");
-//     text = text.replaceAll(__dirname, "");
-//     return text;
-// }
+const inputs = [
+    "1",
+    "10",
+    "100",
+    "1000",
+    "10000",
+    "100000",
+    "1000000",
+    "10000000",
+    "100000000",
+    "1000000000"
+]
 
-module.exports = async (code, input, timeout) => {
+module.exports = async (code, timeout) => {
     const id = uuid.v4();
     const container = createContainer(id);
-    const result = await runCode(container, code, input, timeout ? timeout : 5000);
-
-    // console.log(result)
+    const results = await runCode(container, code, inputs, timeout ? timeout : 5000);
 
     removeContainer(container);
 
-    // const cleaned = cleanOutput(result);
-
-    return result;
+    return results;
 }
