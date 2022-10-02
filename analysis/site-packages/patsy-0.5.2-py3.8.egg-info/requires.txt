@@ -1,0 +1,7 @@
+six
+numpy>=1.4
+
+[test]
+pytest
+pytest-cov
+scipy

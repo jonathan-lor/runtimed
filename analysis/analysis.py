@@ -1,4 +1,11 @@
-import matplotlib.pyplot as plt
+# importing module
+from doctest import testfile
+import sys
+# appending a path
+sys.path.append('./site-packages')
+
+
+# import matplotlib.pyplot as plt
 import numpy as np
 import csv
 # import math
@@ -75,15 +82,15 @@ def fitModel(model):
     # print(ss_res, ss_tot)
     if r_squared == 0:
         r_squared = 0
-    print()
-    print(f'                   R^2:   {r_squared}')
+    # print()
+    # print(f'                   R^2:   {r_squared}')
     if f == quadModel or f == cubedModel or f == linearModel:
         adj_r_sq = 1 - (((1 - r_squared) * (n - 1)) / (n - degree - 1))
         aic = n * log(ss_err) + degree * 2
         bic = n * log(ss_err) + degree * log(n)
-        print(f'    Adjusted R squared:   {adj_r_sq}')
-        print(f'                   AIC: {bic}')
-        print(f'                   BIC: {aic}')
+        # print(f'    Adjusted R squared:   {adj_r_sq}')
+        # print(f'                   AIC: {bic}')
+        # print(f'                   BIC: {aic}')
         return (adj_r_sq, bic)
     return (r_squared, 10000)
 
@@ -124,11 +131,12 @@ def testAll(file):
         max = fit
         bestModel = "Constant"
     # print(max)
-    print(f'The best model for {file} is {bestModel}.  (max: {max}  min: {min})')
+    # print(f'The best model for {file} is {bestModel}.  (max: {max}  min: {min})')
+    print(f'The best model for the data is {bestModel}.')
 
 # testAll("linear.csv")
 # testAll("quad.csv")
 # testAll("const.csv")
 # testAll("cubic.csv")
 # testAll("log.csv")
-
+testfile('data.csv')
