@@ -1,9 +1,3 @@
 # Runtimed
 
-**Runtimed** is a web application that statistically analyzes the runtime complexity of a C++ program. It has been created for HowdyHack 2022.
-
-## Team
-- [Christopher Colling](https://github.com/horsenuggets)
-- [Hunter Finch](https://github.com/hfinchy12)
-- [Jonathan Lor](https://github.com/jonathan-lor)
-- [Minh Dao Nguyen](https://github.com/Minh-Dao-Nguyen)
+**Runtimed** is a web application that statistically analyzes the runtime complexity of a C++ program by running a series of input values through the program and plotting the output results against a regression model. It began as a project for HowdyHack 2022.
