@@ -24,6 +24,7 @@ from scipy.optimize import curve_fit
 # print()
 # global x = []
 # y = []
+
 def loadData(fileName):
     dataframe = read_csv(fileName, header=None)
     data = dataframe.values
