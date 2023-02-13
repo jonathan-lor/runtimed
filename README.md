@@ -7,7 +7,7 @@
 </h1>
 
 <h2 align="center">
-A web application (in development) that statistically analyzes the runtime complexity of a C++ program.
+A web application that statistically analyzes the runtime complexity of a C++ program.
 
 </h2>
 
