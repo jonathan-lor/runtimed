@@ -7,11 +7,11 @@
 </h1>
 
 <h2 align="center">
-A web application that statistically analyzes the runtime complexity of a C++ program.
+Statistically analyze the performance of a C++ function.
 
 </h2>
 
-<h3 align="center">Runtimed takes a user-input C++ function, and runs it with a series of input values in order to plot the output results against a regression model. The r^2 value of the regression then determines the time complexity. Runtimed began as a project for HowdyHack 2022.</h3>
+<h3 align="center">Runtimed takes a user-input C++ function, writes it to a file, and runs it with a series of increasing input values in order to plot the output results against a regression model. The r^2 value of the regression then approximates the time complexity.</h3>
 
 ##
 
